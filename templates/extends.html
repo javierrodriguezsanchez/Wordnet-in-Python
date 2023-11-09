@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% block main %}
+<h1>{{ entrada }}</h1>
+
+{% for  sentido in datos %}
+    <section class= {{sentido.type}} >
+        <center>
+            <p><strong>{{sentido.name}}({{sentido.type}}):</strong> {{sentido.meaning}} </p>
+        </center>
+        <details>
+            <summary></summary>
+            <aside>
+                <h3>Synonyms</h3>
+                <div>
+                    {% for syn in sentido.Syn %}
+                    <button>{{syn}}</button>
+                    {% endfor %}
+                </div>
+            </aside>
+            <aside>
+                <h3>Antonyms</h3>
+                <div>
+                    {% for ant in sentido.Ant %}
+                    <button>{{ant}}</button>
+                    {% endfor %}
+                </div>
+            </aside>
+            <aside>
+                <h3>Hypernyms</h3>
+                <div>
+                    {% for H in sentido.Hyper %}
+                    <button>{{H}}</button>
+                    {% endfor %}
+                </div>
+            </aside>
+            <aside>
+                <h3>Hyponyms</h3>
+                <div>
+                    {% for H in sentido.Hypo %}
+                    <button>{{H}}</button>
+                    {% endfor %}
+                </div>
+            </aside>      
+        </details>
+    </section>
+{% endfor %}
+{% endblock %}
