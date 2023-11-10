@@ -25,15 +25,68 @@
             nav input{
                 font-size: 150%;
             }
-
+            main h1{
+                margin-left: 10%;
+                color: rgb(71, 71, 239);
+            }
+            section{
+                border: solid black 1px;
+                padding: 0.5%;
+                align-items: center;
+                margin: 1%;
+            }
+            section center{
+                font-size: 120%;
+            }
+            aside > div{
+                display: flex;
+                flex-wrap:wrap;
+            }
+            aside button{
+                border: black solid 1px;
+                border-radius: 10%;
+                margin: 0.4% 0.4%;
+                padding: 0.2% 1%;
+                
+                color: white;
+                text-decoration: none;
+            }
+            .noun{
+                background-color: rgb(180, 221, 255);
+            }
+            .noun button{
+                background-color: rgb(14, 14, 165);
+            }
+            .verb{
+                background-color: rgb(255, 193, 180);
+            }
+            .verb button{
+                background-color: rgb(165, 47, 14);
+            }
+            .adjetive{
+                background-color: rgb(180, 255, 201);
+            }
+            .adjetive button{
+                background-color: rgb(14, 165, 72);
+            }
+            .adverb{
+                background-color: rgb(241, 250, 174);
+            }
+            .adverb button{
+                background-color: rgb(143, 139, 17);
+            }
+            
             footer{
-                position: absolute;
-                bottom: 0%;
                 background-color: white;
                 border-top:solid black 3px;
                 padding: 0.4%;
                 margin: 1%;
                 width: 94%;
+            }
+            form{
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         </style>
     </head>
@@ -46,14 +99,16 @@
         </header>
         <nav>
             <center>
-                <form>
-                    <input type="text" placeholder="introduce a word">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
                     <button>🔎</button>
                 </form>
             </center>
         </nav>
-        <main>
-            
+        <main style="min-height: 300px;">
+            {% block main %}
+            {% endblock %}
         </main>
         <footer>
             <h6>Universidad de la Habana</h6>
