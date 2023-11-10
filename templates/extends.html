@@ -4,45 +4,139 @@
 <h1>{{ entrada }}</h1>
 
 {% for  sentido in datos %}
-    <section class= {{sentido.type}} >
-        <center>
-            <p><strong>{{sentido.name}}({{sentido.type}}):</strong> {{sentido.meaning}} </p>
-        </center>
-        <details>
-            <summary></summary>
-            <aside>
-                <h3>Synonyms</h3>
-                <div>
-                    {% for syn in sentido.Syn %}
-                    <button>{{syn}}</button>
-                    {% endfor %}
-                </div>
-            </aside>
-            <aside>
-                <h3>Antonyms</h3>
-                <div>
-                    {% for ant in sentido.Ant %}
-                    <button>{{ant}}</button>
-                    {% endfor %}
-                </div>
-            </aside>
-            <aside>
-                <h3>Hypernyms</h3>
-                <div>
-                    {% for H in sentido.Hyper %}
-                    <button>{{H}}</button>
-                    {% endfor %}
-                </div>
-            </aside>
-            <aside>
-                <h3>Hyponyms</h3>
-                <div>
-                    {% for H in sentido.Hypo %}
-                    <button>{{H}}</button>
-                    {% endfor %}
-                </div>
-            </aside>      
-        </details>
-    </section>
+    
+<section class= {{sentido.type}} >
+        
+    <center>
+        <p><strong>({{sentido.type}}):</strong> {{sentido.meaning}} </p>
+    </center>
+        
+    <details>
+        <summary></summary>
+            
+        {% if sentido.AnySyn %}
+        <aside>
+            <h3>Other words for that:</h3>
+            <div>
+                {% for syn in sentido.Syn %}
+                <button>{{syn}}</button>
+                {% endfor %}
+            </div>
+        </aside>
+        {% endif %}
+
+        {% if sentido.AnyAnt %}
+        <aside>
+            <h3>Opposite words:</h3>
+            <div>
+                {% for ant in sentido.Ant %}
+                <button>{{ant}}</button>
+                {% endfor %}
+            </div>
+        </aside>
+        {% endif %}
+    
+        {% if sentido.AnyHyper %}
+        <aside>
+            <h3>Is A:</h3>
+            <div>
+                {% for H in sentido.Hyper %}
+                <button>{{H}}</button>
+                {% endfor %}
+            </div>
+        </aside>
+        {% endif %}
+
+        {% if sentido.AnyHypo %}
+        <aside>
+            <h3>Can be</h3>
+            <div>
+                {% for H in sentido.Hypo %}
+                <button>{{H}}</button>
+                {% endfor %}
+            </div>
+        </aside>      
+        {% endif %}
+
+        {% if sentido.AnyPHol %}
+        <aside>
+            <h3>Is part of</h3>
+            <div>
+                {% for H in sentido.PHol %}
+                <button>{{H}}</button>
+                {% endfor %}
+            </div>
+        </aside>      
+        {% endif %}
+
+        {% if sentido.AnyPMer %}
+        <aside>
+            <h3>Composed by the parts:</h3>
+            <div>
+                {% for Mer in sentido.PMer %}
+                <button>{{Mer}}</button>
+                {% endfor %}
+            </div>
+        </aside>      
+        {% endif %}
+
+        {% if sentido.AnyMHol %}
+        <aside>
+            <h3>Is member of:</h3>
+            <div>
+                {% for H in sentido.MHol %}
+                <button>{{H}}</button>
+                {% endfor %}
+            </div>
+        </aside>      
+        {% endif %}
+
+        {% if sentido.AnyMMer %}
+        <aside>
+            <h3>Composed by the members:</h3>
+            <div>
+                {% for Mer in sentido.MMer %}
+                <button>{{Mer}}</button>
+                {% endfor %}
+            </div>
+        </aside>      
+        {% endif %}
+
+        {% if sentido.AnySMer %}
+        <aside>
+            <h3>Made of:</h3>
+            <div>
+                {% for Mer in sentido.SMer %}
+                <button>{{Mer}}</button>
+                {% endfor %}
+            </div>
+        </aside>      
+        {% endif %}
+
+        {% if sentido.AnyEnt %}
+        <aside>
+            <h3>Implicates</h3>
+            <div>
+                {% for Ent in sentido.Ent %}
+                <button>{{Ent}}</button>
+                {% endfor %}
+            </div>
+        </aside>      
+        {% endif %}
+
+        {% if sentido.AnyCauses %}
+        <aside>
+            <h3>Causes:</h3>
+            <div>
+                {% for Causes in sentido.Causes %}
+                <button>{{Causes}}</button>
+                {% endfor %}
+            </div>
+        </aside>      
+        {% endif %}
+
+    </details>
+
+</section>
 {% endfor %}
 {% endblock %}
