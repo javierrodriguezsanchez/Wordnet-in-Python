@@ -1,19 +1,32 @@
 {% extends 'index.html' %}
 
+<!--
+    NOTA: esta es la principal pagina para modificar el como se ensenan los resultados,
+    si solo se va a agregar algo, esta señalado el lugar.
+    NOTA2: Cambiar para que al presionar los botones se realice esa busqueda.
+    NOTA3: Si algo se quiere traer de info, ir a dic/getdata.py
+-->
+        
+
 {% block main %}
+
+<!--nombre de la palabra-->
 <h1>{{ entrada }}</h1>
 
+<!--poner cada significado-->
 {% for  sentido in datos %}
-    
+
 <section class= {{sentido.type}} >
-        
+
+    <!--significado-->        
     <center>
         <p><strong>({{sentido.type}}):</strong> {{sentido.meaning}} </p>
     </center>
         
     <details>
         <summary></summary>
-            
+        
+        <!--sinonimos-->
         {% if sentido.AnySyn %}
         <aside>
             <h3>Other words for that:</h3>
@@ -25,6 +38,7 @@
         </aside>
         {% endif %}
 
+        <!--antonimos-->
         {% if sentido.AnyAnt %}
         <aside>
             <h3>Opposite words:</h3>
@@ -35,7 +49,8 @@
             </div>
         </aside>
         {% endif %}
-    
+
+        <!--hiperonimos-->
         {% if sentido.AnyHyper %}
         <aside>
             <h3>Is A:</h3>
@@ -47,6 +62,7 @@
         </aside>
         {% endif %}
 
+        <!--hiponimos-->
         {% if sentido.AnyHypo %}
         <aside>
             <h3>Can be</h3>
@@ -58,6 +74,7 @@
         </aside>      
         {% endif %}
 
+        <!--holonimos de parte-->
         {% if sentido.AnyPHol %}
         <aside>
             <h3>Is part of</h3>
@@ -69,6 +86,7 @@
         </aside>      
         {% endif %}
 
+        <!--meronimos de parte-->
         {% if sentido.AnyPMer %}
         <aside>
             <h3>Composed by the parts:</h3>
@@ -80,6 +98,7 @@
         </aside>      
         {% endif %}
 
+        <!--holonimos de miembro-->
         {% if sentido.AnyMHol %}
         <aside>
             <h3>Is member of:</h3>
@@ -91,6 +110,7 @@
         </aside>      
         {% endif %}
 
+        <!--meronimos de miembro-->
         {% if sentido.AnyMMer %}
         <aside>
             <h3>Composed by the members:</h3>
@@ -102,6 +122,7 @@
         </aside>      
         {% endif %}
 
+        <!--meronimos de sustancia-->
         {% if sentido.AnySMer %}
         <aside>
             <h3>Made of:</h3>
@@ -113,6 +134,7 @@
         </aside>      
         {% endif %}
 
+        <!--entailment-->
         {% if sentido.AnyEnt %}
         <aside>
             <h3>Implicates</h3>
@@ -124,6 +146,7 @@
         </aside>      
         {% endif %}
 
+        <!--causas-->
         {% if sentido.AnyCauses %}
         <aside>
             <h3>Causes:</h3>
@@ -135,8 +158,8 @@
         </aside>      
         {% endif %}
 
+        <!--Si hay algo mas que agregar, hazlo aqui-->
     </details>
-
 </section>
 {% endfor %}
 {% endblock %}
